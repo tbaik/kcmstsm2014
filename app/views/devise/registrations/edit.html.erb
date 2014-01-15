@@ -1,0 +1,30 @@
+<div class="form-actions edit-page">
+    <h2 class="form-horizontal">Edit Account</h2>
+
+    <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+      <%= f.error_notification %>
+
+      <% if current_user.admin? %>
+        <%= "Year" %>
+        <br />
+        <%= f.select :year, [['Freshman','freshman'],['Sophomore','sophomore'],['Junior','junior'], ['Senior', 'senior'], ['Leader', 'leader']] %>
+        <br />
+        <%= "School" %>
+        <br />
+        <%= f.select :school, [['UCI','uci'],['UCSB','ucsb'],['USC','usc'], ['UCLA', 'ucla'], ['UCSD', 'ucsd'], ['UCR', 'ucr'], ['Pepperdine', 'pepperdine'], ['CMU', 'cmu'], ['NYU', 'nyu'], ['BU', 'bu'], ['Leader', 'leader']] %>
+        <br />
+        <%= "Team" %>
+        <br />
+        <%= f.select :team, [['India','india'],['China','china'],['Japan','japan'], ['Nicaragua', 'nicaragua'], ['Uganda', 'uganda'], ['Leader', 'leader']] %>
+      <% end %>
+
+      <%= f.input :password, label: "New Password", autocomplete: "off" %>
+      <%= f.input :password_confirmation, label: "New Password Confirmation", autocomplete: "off" %>
+      <%= f.input :current_password %>
+      
+        <%= f.submit "Update", class: "btn btn-primary btn-large" %>
+    <% end %>
+
+    <%= link_to "Back", :back %>
+
+  </div>

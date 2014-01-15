@@ -1,0 +1,33 @@
+<%= render "pages/home" %>
+
+<% if user_signed_in? %>
+<div class = "user-content">
+    <% if current_user.admin? %>
+      <h1>Listing Finances</h1>
+      <%= link_to 'New Finance', new_finance_path, class: "btn btn-primary" %>
+      <br><br/>
+    <% else %>
+       <h1><%= current_user.fullname %>'s Finances</h1>
+    <% end %>
+    <% @total_cash = 0 %>
+    <% @total_check = 0 %>
+    <% @total_amount = 0 %>
+  <%= render "finances_grid" %>
+    <div class ="form-actions">
+      <p> <strong>Total Cash Amount:</strong> $
+      <%= @total_cash %>
+      </p>
+      <p><strong>Total Check Amount:</strong> $
+      <%= @total_check %>
+      </p>
+      <% @total_amount = @total_cash + @total_check %>
+      <p><strong>Total Amount:</strong> $
+      <%= @total_amount %>
+      </p>
+    </div>
+    <% if current_user.admin? %>
+      <button class =  "btn btn-primary wg-external-csv-export-button{'data-grid-name' => 'g1'}"> Export To CSV </button>
+    <% end %>
+  <br />
+</div>
+<% end %>

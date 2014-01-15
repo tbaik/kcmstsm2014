@@ -1,0 +1,18 @@
+<%= simple_form_for(@finance) do |f| %>
+  <%= f.error_notification %>
+
+    ID
+    <br />
+    <%= f.text_field :user_id %>
+    <% @input_id = :user_id %>
+    <%= f.input :date %>
+    <%= f.input :supporter_name %>
+    <%= f.input :cash_amount %>
+    <%= f.input :check_amount %>
+    <%= f.input :check_number %>
+    <%= f.input :notes %>
+    <%= f.input :data_entry %>
+    <%= f.input :audit %>
+
+    <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>

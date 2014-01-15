@@ -1,0 +1,65 @@
+<div class = "container">
+  <table class = "table table-striped table-bordered">
+    <tr class ="info">
+      <td><strong>Team</strong></td>
+      <td><strong>Total Cash Amount</strong></td> 
+      <td><strong>Total Check Amount</strong></td>
+      <td><strong>Total Amount</strong></td>
+    </tr>
+    <tr>
+      <td>India</td>
+      <td><%= @india_total_cash %></td>
+      <td><%= @india_total_check %></td>
+      <td><%= @india_total_amount %></td>
+    </tr>
+      <tr>
+      <td>Japan</td>
+      <td><%= @japan_total_cash %></td>
+      <td><%= @japan_total_check %></td>
+      <td><%= @japan_total_amount %></td>
+    </tr>
+      <tr>
+      <td>Nicaragua</td>
+      <td><%= @nicaragua_total_cash %></td>
+      <td><%= @nicaragua_total_check %></td>
+      <td><%= @nicaragua_total_amount %></td>
+    </tr>
+      <tr>
+      <td>Uganda</td>
+      <td><%= @uganda_total_cash %></td>
+      <td><%= @uganda_total_check %></td>
+      <td><%= @uganda_total_amount %></td>
+    </tr>
+      <tr>
+      <td>China</td>
+      <td><%= @china_total_cash %></td>
+      <td><%= @china_total_check %></td>
+      <td><%= @china_total_amount %></td>
+    </tr>
+  </table>   
+
+  <div class ="form-actions">
+    <p> Team Totals </p>
+    <p> <strong>Total Cash Amount:</strong> $
+    <%= @total_cash %>
+    </p>
+    <p><strong>Total Check Amount:</strong> $
+    <%= @total_check %>
+    </p>
+    <p><strong>Total Amount:</strong> $
+    <%= @total_amount %>
+    </p>
+  </div>
+    <div class ="form-actions">
+    <p> Team Leader Totals </p>
+    <p> <strong>Total Cash Amount:</strong> $
+    <%= @leader_total_cash %>
+    </p>
+    <p><strong>Total Check Amount:</strong> $
+    <%= @leader_total_check %>
+    </p>
+    <p><strong>Total Amount:</strong> $
+    <%= @leader_total_amount %>
+    </p>
+  </div>
+</div>

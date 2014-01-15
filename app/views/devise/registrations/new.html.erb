@@ -1,0 +1,28 @@
+<div class="form-actions">
+	<h1 class='form-horizontal'>Register</h1>
+
+	<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+	  <%= devise_error_messages! %>
+
+    <%= f.input :fullname %>
+		<%= "Year" %>
+    <br />
+    <%= f.select :year, [['Freshman','freshman'],['Sophomore','sophomore'],['Junior','junior'], ['Senior', 'senior']] %>
+    <br />
+    <%= "School" %>
+    <br />
+    <%= f.select :school, [['UCI','uci'],['UCSB','ucsb'],['USC','usc'], ['UCLA', 'ucla'], ['UCSD', 'ucsd'], ['UCR', 'ucr'], ['Pepperdine', 'pepperdine'], ['CMU', 'cmu'], ['NYU', 'nyu'], ['BU', 'bu']] %>
+    <br />
+    <%= "Team" %>
+    <br />
+    <%= f.select :team, [['India','india'],['China','china'],['Japan','japan'], ['Nicaragua', 'nicaragua'], ['Uganda', 'uganda'], ['Leader', 'leader']] %>
+    <%= f.input :email %>
+    <%= f.input :password %>
+    <%= f.input :password_confirmation %>
+
+
+  	<%= "No more sign-ups." %>
+	<% end %>
+
+	<%= render "devise/shared/links" %>
+</div>
