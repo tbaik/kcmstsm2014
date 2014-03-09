@@ -5,9 +5,12 @@ class FinancesController < ApplicationController
   def index
     if user_signed_in?
       if current_admin_user
+        @finance = Finance.new
         @finances_grid = initialize_grid(Finance, 
           :name => 'g1',
           :include => [:user],
+          :order => 'finances.id',
+          :order_direction => 'desc',
           :enable_export_to_csv => true,
           :csv_file_name => 'KCMSTSM2K13FINANCES')
 
@@ -16,6 +19,8 @@ class FinancesController < ApplicationController
       else
         @finances_grid = initialize_grid(Finance, 
           :include => [:user],
+          :order => 'finances.id',
+          :order_direction => 'desc',
           :conditions => "user_id = #{current_user.id}" )
         @total_cash = current_user.finances.sum("cash_amount")
         @total_check = current_user.finances.sum("check_amount")
@@ -73,7 +78,7 @@ class FinancesController < ApplicationController
 
       respond_to do |format|
         if @finance.save
-          format.html { redirect_to @finance, notice: 'Finance was successfully created.' }
+          format.html { redirect_to root_path, notice: 'Finance was successfully created.' }
           format.json { render json: @finance, status: :created, location: @finance }
         else
           format.html { render action: "new" }

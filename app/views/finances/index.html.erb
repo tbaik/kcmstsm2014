@@ -3,31 +3,65 @@
 <% if user_signed_in? %>
 <div class = "user-content">
     <% if current_user.admin? %>
-      <h1>Listing Finances</h1>
-      <%= link_to 'New Finance', new_finance_path, class: "btn btn-primary" %>
-      <br><br/>
+      <h1>Listing All Finances</h1>
+      <% #= link_to 'New Finance', new_finance_path, class: "btn btn-primary" %>
+      <br>
+    <%= simple_form_for(@finance, :html => {:class => 'form-inline'}) do |f| %>
+        <%= f.error_notification %>
+        <div "control-group controls controls-row">
+        <fieldset>
+          <%= f.label :user_id, "ID" %>
+          <%= f.text_field :user_id, :class => "span1" %>
+          <% @input_id = :user_id %>
+          <%= f.label :date, "Date" %>
+          <%= f.text_field :date, :class => "span2", :value => Date.today  %>
+          <%= f.label :supporter_name, "Supporter Name" %>
+          <%= f.text_field :supporter_name, :class => "span2" %>
+          <%= f.label :cash_amount, "Cash Amount" %>
+          <%= f.text_field :cash_amount, :class => "span1"  %>
+          <%= f.label :check_amount, "Check Amount" %>
+          <%= f.text_field :check_amount, :class => "span1"  %><br><br>
+          <%= f.label :check_number, "Check Number" %>
+          <%= f.text_field :check_number, :class => "span1"  %>
+          <%= f.label :notes, "Notes" %>
+          <%= f.text_field :notes, :class => "span2"  %>
+          <%= f.label :data_entry, "Data Entry" %>
+          <%= f.text_field :data_entry, :class => "span2"  %>
+          <%= f.label :audit, "Audit" %>
+          <%= f.text_field :audit, :class => "span2" %><br><br>
+          <%= f.button :submit, class: "btn btn-primary" %>
+        </div>
+        </fieldset>
+    <% end %>
+
+
+       
     <% else %>
        <h1><%= current_user.fullname %>'s Finances</h1>
     <% end %>
     <% @total_cash = 0 %>
     <% @total_check = 0 %>
     <% @total_amount = 0 %>
-  <%= render "finances_grid" %>
-    <div class ="form-actions">
-      <p> <strong>Total Cash Amount:</strong> $
-      <%= @total_cash %>
-      </p>
-      <p><strong>Total Check Amount:</strong> $
-      <%= @total_check %>
-      </p>
-      <% @total_amount = @total_cash + @total_check %>
-      <p><strong>Total Amount:</strong> $
-      <%= @total_amount %>
-      </p>
+
+
+  <div class="container">
+    <%= render "finances_grid" %>
+      <div class ="form-actions">
+        <p> <strong>Total Cash Amount:</strong> $
+        <%= @total_cash %>
+        </p>
+        <p><strong>Total Check Amount:</strong> $
+        <%= @total_check %>
+        </p>
+        <% @total_amount = @total_cash + @total_check %>
+        <p><strong>Total Amount:</strong> $
+        <%= @total_amount %>
+        </p>
+      </div>
+      <% if current_user.admin? %>
+        <button class =  "btn btn-primary wg-external-csv-export-button{'data-grid-name' => 'g1'}"> Export To CSV </button>
+      <% end %>
+     <br />
     </div>
-    <% if current_user.admin? %>
-      <button class =  "btn btn-primary wg-external-csv-export-button{'data-grid-name' => 'g1'}"> Export To CSV </button>
-    <% end %>
-  <br />
-</div>
+  </div>
 <% end %>

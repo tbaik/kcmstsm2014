@@ -14,12 +14,12 @@ group :production do
 end
 group :development, :test do 
 	gem 'sqlite3'
+	gem 'rails_layout'
 end
-
 # Gems used only for assets and not required
 # in production environments by default.
   gem 'sass-rails',   '~> 3.2.3'
-  gem 'bootstrap-sass', '~> 2.3.1.0'
+  gem 'bootstrap-sass', '~> 2.3.2.0'
 group :assets do
 
   gem 'coffee-rails', '~> 3.2.1'
@@ -29,7 +29,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+gem "jquery-rails", "~> 2.3.0"
 gem 'jquery_datepicker'
 
 # To use ActiveModel has_secure_password
