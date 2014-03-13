@@ -8,11 +8,12 @@ gem 'rails', '3.2.12'
 gem 'simple_form'
 gem 'devise'
 gem "wice_grid", '3.2.1'
+gem 'rails3-jquery-autocomplete'
 
-group :production do 
+group :production do
 	gem 'pg'
 end
-group :development, :test do 
+group :development, :test do
 	gem 'sqlite3'
 	gem 'rails_layout'
 end

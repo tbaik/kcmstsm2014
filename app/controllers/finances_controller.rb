@@ -2,11 +2,18 @@ class FinancesController < ApplicationController
   before_filter :authenticate_user!, except: [:index]
   # GET /finances
   # GET /finances.json
+
+  autocomplete :finance, :user_id
   def index
+
+
     if user_signed_in?
       if current_admin_user
         @finance = Finance.new
-        @finances_grid = initialize_grid(Finance, 
+#         Get all user names
+        @users = User.all
+
+        @finances_grid = initialize_grid(Finance,
           :name => 'g1',
           :include => [:user],
           :order => 'finances.id',
@@ -14,10 +21,10 @@ class FinancesController < ApplicationController
           :enable_export_to_csv => true,
           :csv_file_name => 'KCMSTSM2K13FINANCES')
 
-        export_grid_if_requested('g1' => 'finances_grid') do 
+        export_grid_if_requested('g1' => 'finances_grid') do
         end
       else
-        @finances_grid = initialize_grid(Finance, 
+        @finances_grid = initialize_grid(Finance,
           :include => [:user],
           :order => 'finances.id',
           :order_direction => 'desc',
@@ -40,7 +47,7 @@ class FinancesController < ApplicationController
   def show
     if current_admin_user
       @finance = Finance.find(params[:id])
-    else 
+    else
       @finance = current_user.finances.find(params[:id])
     end
 
