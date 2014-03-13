@@ -6,13 +6,14 @@
       <h1>Listing All Finances</h1>
       <% #= link_to 'New Finance', new_finance_path, class: "btn btn-primary" %>
       <br>
+
     <%= simple_form_for(@finance, :html => {:class => 'form-inline'}) do |f| %>
         <%= f.error_notification %>
         <div "control-group controls controls-row">
         <fieldset>
 
-          <%= f.label :user_id, "Name" %>
-          <%= f.autocomplete_field :user_id, autocomplete_finances_user_id_finances_path %>
+          <%= f.label :user_id, "ID" %>
+          <%= f.text_field :user_id %>
           <% @input_id = :user_id %>
           <%= f.label :date, "Date" %>
           <%= f.text_field :date, :class => "span2", :value => Date.today  %>
