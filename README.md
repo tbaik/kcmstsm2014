@@ -1,14 +1,7 @@
-kcmfinance.herokuapp.com Finances Web Application
+#KCM STSM 2014 Finance Web App
 
-kcmonline.org for more information on the KCM Organization
+##[Korean-American Campus Missions](kcmonline.org) Short Term Summer Missions program's web application used to record all finance. 
+###Used by over 100 active users on a daily basis for the duration of the STSM program. 
 
-Author: Tony Baik
+[Check it out Here!](kcmstsm2014.herokuapp.com)
 
-Gems used: 
-Devise for User Authentication
-Wice Grid for tables and filtering
-Jquery
-Twitter Bootstrap
-Simpleform
-
-=========
