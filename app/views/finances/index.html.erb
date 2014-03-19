@@ -13,7 +13,7 @@
         <fieldset>
 
           <%= f.label :user_id, "ID" %>
-          <%= f.text_field :user_id, class: "span1" %>
+          <%= f.autocomplete_field :user_id, class: "span1" %>
           <% @input_id = :user_id %>
           <%= f.label :date, "Date" %>
           <%= f.text_field :date, :class => "span2", :value => Date.today  %>
