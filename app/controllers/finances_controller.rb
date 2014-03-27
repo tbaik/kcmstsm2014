@@ -3,7 +3,7 @@ class FinancesController < ApplicationController
   # GET /finances
   # GET /finances.json
 
-  autocomplete :finance, :user_id
+  autocomplete :user, :fullname
   def index
 
 
@@ -11,7 +11,7 @@ class FinancesController < ApplicationController
       if current_admin_user
         @finance = Finance.new
 #         Get all user names
-        @users = User.all
+        @user = User.new
 
         @finances_grid = initialize_grid(Finance,
           :name => 'g1',
@@ -81,7 +81,7 @@ class FinancesController < ApplicationController
   def create
     if current_admin_user
       #@finance = Finance.new(params[:finance])
-      @finance = User.find(params[:finance][:user_id]).finances.new(params[:finance])
+      @finance = User.find(params[:finance][@input_id]).finances.new(params[:finance])
 
       respond_to do |format|
         if @finance.save
