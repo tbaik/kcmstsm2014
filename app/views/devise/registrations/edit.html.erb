@@ -15,13 +15,13 @@
         <br />
         <%= "Team" %>
         <br />
-        <%= f.select :team, [['India','india'],['China','china'],['Japan','japan'], ['Nicaragua', 'nicaragua'], ['Uganda', 'uganda'], ['Leader', 'leader']] %>
+        <%= f.select :team, [['India','india'],['China','china'],['Japan','japan'], ['Nicaragua', 'nicaragua'], ['Cambodia', 'cambodia'], ['Philippines', 'philippines'], ['Turkey', 'turkey'], ['Leader', 'leader']] %>
       <% end %>
 
       <%= f.input :password, label: "New Password", autocomplete: "off" %>
       <%= f.input :password_confirmation, label: "New Password Confirmation", autocomplete: "off" %>
       <%= f.input :current_password %>
-      
+
         <%= f.submit "Update", class: "btn btn-primary btn-large" %>
     <% end %>
 
