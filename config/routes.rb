@@ -2,11 +2,9 @@ KcmOnline::Application.routes.draw do
   # resources :finances
 
   resources :finances do
-    # get :autocomplete_user_fullname, :on => :collection
-    # resources :users
+    get :autocomplete_user_fullname, :on => :collection
+    resources :users
   end
-
-get 'finances/autocomplete_user_fullname'
 
   devise_for :users
 

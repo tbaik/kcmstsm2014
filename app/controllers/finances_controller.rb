@@ -4,6 +4,7 @@ class FinancesController < ApplicationController
   # GET /finances.json
 
   autocomplete :user, :fullname
+
   def index
 
     if user_signed_in?
@@ -80,13 +81,14 @@ class FinancesController < ApplicationController
   def create
     if current_admin_user
       #@finance = Finance.new(params[:finance])
-      @finance = User.find(:all, :conditions => ["fullname = ?", params[:finance][@full_name]]).first.finances.new(params[:finance])
+      
+      @finance = User.find(:all, :conditions => ["fullname = ?", params[:user][:fullname]]).first.finances.new(params[:finance])
       respond_to do |format|
         if @finance.save
           format.html { redirect_to root_path, notice: 'Finance was successfully created.' }
           format.json { render json: @finance, status: :created, location: @finance }
         else
-          format.html { render action: "new" }
+          format.html { render action: "index" }
           format.json { render json: @finance.errors, status: :unprocessable_entity }
         end
       end

@@ -7,21 +7,22 @@
       <% #= link_to 'New Finance', new_finance_path, class: "btn btn-primary" %>
       <br>
 
-<!--     <%= simple_form_for(@user, url: autocomplete_user_fullname_finances_path, :html => {:class => 'form-inline'}) do |f| %>
+<!--     <%= form_for(@user, url: autocomplete_user_fullname_finances_path, :html => {:class => 'form-inline'}) do |f| %>
     <div "control-group controls controls-row">
     <fieldset>
       <%= f.label :fullname, "Name" %>
-      <%= f.autocomplete_field :fullname, autocomplete_user_fullname_finances_path %>
+      <%= f.autocomplete_field :fullname, autocomplete_user_fullname_finances_path  %>
     </div>
     </fieldset>
     <% end %> -->
 
-    <%= simple_form_for(@finance, :html => {:class => 'form-inline'}) do |f| %>
-        <%= f.error_notification %>
+    <%= form_for(@finance, :html => {:class => 'form-inline'}) do |f| %>
         <div "control-group controls controls-row">
         <fieldset>
-          <%= f.label 'user_fullname', "Name" %>
-          <%= text_field_tag 'user_fullname', '', :autocomplete => autocomplete_user_fullname_finances_path %>
+          <%= fields_for :user do |u|  %>
+            <%= u.label :fullname, "Name" %>
+            <%= u.autocomplete_field :fullname, autocomplete_user_fullname_finances_path  %>
+          <% end %>
           <%= f.label :date, "Date" %>
           <%= f.text_field :date, :class => "span2", :value => Date.today  %>
           <%= f.label :supporter_name, "Supporter Name" %>
