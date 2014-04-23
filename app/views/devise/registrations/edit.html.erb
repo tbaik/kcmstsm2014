@@ -5,26 +5,23 @@
       <%= f.error_notification %>
 
       <% if current_user.admin? %>
-        <%= "Year" %>
-        <br />
-        <%= f.select :year, [['Freshman','freshman'],['Sophomore','sophomore'],['Junior','junior'], ['Senior', 'senior'], ['Leader', 'leader']] %>
-        <br />
-        <%= "School" %>
-        <br />
-        <%= f.select :school, [['UCI','uci'],['UCSB','ucsb'],['USC','usc'], ['UCLA', 'ucla'], ['UCSD', 'ucsd'], ['UCR', 'ucr'], ['Pepperdine', 'pepperdine'], ['CMU', 'cmu'], ['UCB', 'ucb'], ['Leader', 'leader'] ] %>
-        <br />
-        <%= "Team" %>
-        <br />
-        <%= f.select :team, [['India','india'],['China','china'],['Japan','japan'], ['Nicaragua', 'nicaragua'], ['Cambodia', 'cambodia'], ['Philippines', 'philippines'], ['Turkey', 'turkey'], ['Leader', 'leader']] %>
+        <%= f.label :year %>
+        <%= f.select :year, [['Freshman','freshman'],['Sophomore','sophomore'],['Junior','junior'], ['Senior', 'senior'], ['Leader', 'leader']] %><br><br>
+        <%= f.label :school %>
+        <%= f.select :school, [['UCI','uci'],['UCSB','ucsb'],['USC','usc'], ['UCLA', 'ucla'], ['UCSD', 'ucsd'], ['UCR', 'ucr'], ['Pepperdine', 'pepperdine'], ['CMU', 'cmu'], ['UCB', 'ucb'], ['Leader', 'leader'] ] %><br><br>
+        <%= f.label :team %>
+        <%= f.select :team, [['India','india'],['China','china'],['Japan','japan'], ['Nicaragua', 'nicaragua'], ['Cambodia', 'cambodia'], ['Philippines', 'philippines'], ['Turkey', 'turkey'], ['Leader', 'leader']] %><br><br>
       <% end %>
 
-      <%= f.input :password, label: "New Password", autocomplete: "off" %>
-      <%= f.input :password_confirmation, label: "New Password Confirmation", autocomplete: "off" %>
-      <%= f.input :current_password %>
+      <%= f.label :current_password %>
+      <%= f.text_field :current_password %><br><br>
+      <%= f.label :password %>
+      <%= f.text_field :password, label: "New Password", autocomplete: "off" %><br><br>
+      <%= f.label :password_confirmation %>
+      <%= f.text_field :password_confirmation, label: "New Password Confirmation", autocomplete: "off" %><br><br>
+
 
         <%= f.submit "Update", class: "btn btn-primary btn-large" %>
     <% end %>
-
-    <%= link_to "Back", :back %>
 
   </div>
