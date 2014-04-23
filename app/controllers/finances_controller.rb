@@ -6,7 +6,6 @@ class FinancesController < ApplicationController
   autocomplete :user, :fullname
   def index
 
-
     if user_signed_in?
       if current_admin_user
         @finance = Finance.new
@@ -81,8 +80,7 @@ class FinancesController < ApplicationController
   def create
     if current_admin_user
       #@finance = Finance.new(params[:finance])
-      @finance = User.find(params[:finance][@input_id]).finances.new(params[:finance])
-
+      @finance = User.find(:all, :conditions => ["fullname = ?", params[:finance][@full_name]]).first.finances.new(params[:finance])
       respond_to do |format|
         if @finance.save
           format.html { redirect_to root_path, notice: 'Finance was successfully created.' }
