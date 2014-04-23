@@ -16,7 +16,7 @@
     </fieldset>
     <% end %> -->
 
-    <%= form_for(@finance, :html => {:class => 'form-inline'}) do |f| %>
+    <%= simple_form_for(@finance, :html => {:class => 'form-inline'}) do |f| %>
         <div "control-group controls controls-row">
         <fieldset>
           <%= fields_for :user do |u|  %>
@@ -70,7 +70,7 @@
         </p>
       </div>
       <% if current_user.admin? %>
-        <button class =  "btn btn-primary wg-external-csv-export-button{'data-grid-name' => 'g1'}"> Export To CSV </button>
+        <button class =  "btn btn-primary wg-external-csv-export-button" data-grid-name = 'g1'> Export To CSV </button>
       <% end %>
      <br />
     </div>

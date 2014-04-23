@@ -1,11 +1,11 @@
 
-<%= grid(@finances_grid) do |f| 
-  
+<%= grid(@finances_grid) do |f|
+
     f.column name: 'ID', html: {style: 'text-align: center'}, attribute: 'id', filter: false,   model: 'User' do |fin|
       fin.user_id
-    end  
+    end
     f.column name: 'Name', attribute: 'fullname', html: {style: 'text-align: center'}, model: 'User' do |fin|
-      User.find(fin.user_id).fullname 
+      User.find(fin.user_id).fullname
     end
     f.column name: 'Team', attribute: 'team', html: {style: 'text-align: center'}, model: 'User' do |fin|
       fin.user.team
@@ -18,17 +18,17 @@
     end
     f.column name: 'Cash Amount', attribute: 'cash_amount', html: {style: 'text-align: center'}, model: 'Finance', filter: false do |fin|
       if fin.cash_amount != nil
-        @total_cash += fin.cash_amount
+        # @total_cash += fin.cash_amount
       end
       fin.cash_amount
     end
     f.column name: 'Check Amount', attribute: 'check_amount', html: {style: 'text-align: center'}, model: 'Finance', filter: false do |fin|
       if fin.check_amount != nil
-        @total_check += fin.check_amount
+        # @total_check += fin.check_amount
       end
       fin.check_amount
     end
-    if current_user.admin? 
+    if current_user.admin?
       f.column name: 'Notes', attribute: 'notes', html: {style: 'text-align: center'}, filter: false, model: 'Finance' do |fin|
         fin.notes
       end
@@ -46,5 +46,5 @@
       end
     end
 
-    
+
   end -%>

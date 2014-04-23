@@ -19,10 +19,8 @@ class FinancesController < ApplicationController
           :order => 'finances.id',
           :order_direction => 'desc',
           :enable_export_to_csv => true,
-          :csv_file_name => 'KCMSTSM2K13FINANCES')
+          :csv_file_name => 'KCMSTSM2K14FINANCES')
 
-        export_grid_if_requested('g1' => 'finances_grid') do
-        end
       else
         @finances_grid = initialize_grid(Finance,
           :include => [:user],
@@ -33,13 +31,13 @@ class FinancesController < ApplicationController
         @total_check = current_user.finances.sum("check_amount")
         @total_amount = @total_cash + @total_check
       end
-      respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @finances }
+        export_grid_if_requested('g1' => 'finances_grid') do
+        respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @finances }
+      end
       end
     end
-
-
   end
 
   # GET /finances/1
@@ -81,7 +79,7 @@ class FinancesController < ApplicationController
   def create
     if current_admin_user
       #@finance = Finance.new(params[:finance])
-      
+
       @finance = User.find(:all, :conditions => ["fullname = ?", params[:user][:fullname]]).first.finances.new(params[:finance])
       respond_to do |format|
         if @finance.save
