@@ -17,15 +17,9 @@
       fin.supporter_name
     end
     f.column name: 'Cash Amount', attribute: 'cash_amount', html: {style: 'text-align: center'}, model: 'Finance', filter: false do |fin|
-      if fin.cash_amount != nil
-        @total_cash += fin.cash_amount
-      end
       fin.cash_amount
     end
     f.column name: 'Check Amount', attribute: 'check_amount', html: {style: 'text-align: center'}, model: 'Finance', filter: false do |fin|
-      if fin.check_amount != nil
-        @total_check += fin.check_amount
-      end
       fin.check_amount
     end
     if current_user.admin?
@@ -37,12 +31,6 @@
       end
       f.column name: 'Audit', attribute: 'audit', html: {style: 'text-align: center'}, filter: false, model: 'Finance' do |fin|
         fin.audit
-      end
-      f.column name: 'Edit' do |fin|
-        link_to 'Edit', edit_finance_path(fin)
-      end
-      f.column name: 'Destroy' do |fin|
-        link_to 'Destroy', fin, method: :delete, data: { confirm: 'Are you sure?' }
       end
     end
 

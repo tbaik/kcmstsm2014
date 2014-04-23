@@ -31,7 +31,7 @@ class FinancesController < ApplicationController
         @total_check = current_user.finances.sum("check_amount")
         @total_amount = @total_cash + @total_check
       end
-        export_grid_if_requested('g1' => 'finances_grid') do
+        export_grid_if_requested('g1' => 'export_grid') do
         respond_to do |format|
         format.html # index.html.erb
         format.json { render json: @finances }
