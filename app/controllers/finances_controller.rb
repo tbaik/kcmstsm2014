@@ -2,7 +2,7 @@ class FinancesController < ApplicationController
   before_filter :authenticate_user!, except: [:index]
   # GET /finances
   # GET /finances.json
-  require 'csv'
+  
   autocomplete :user, :fullname
 
   def index
