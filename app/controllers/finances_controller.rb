@@ -2,7 +2,7 @@ class FinancesController < ApplicationController
   before_filter :authenticate_user!, except: [:index]
   # GET /finances
   # GET /finances.json
-
+  require 'csv'
   autocomplete :user, :fullname
 
   def index
@@ -101,7 +101,7 @@ class FinancesController < ApplicationController
 
       respond_to do |format|
         if @finance.update_attributes(params[:finance])
-          format.html { redirect_to @finance, notice: 'Finance was successfully updated.' }
+          format.html { redirect_to root_path, notice: 'Finance was successfully updated.' }
           format.json { head :no_content }
         else
           format.html { render action: "edit" }
