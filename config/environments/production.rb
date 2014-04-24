@@ -12,7 +12,7 @@ KcmOnline::Application.configure do
   config.serve_static_assets = false
 
   # Compress JavaScripts and CSS
-  config.assets.compress = true
+  config.assets.compress = false
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compile = true
@@ -64,7 +64,7 @@ KcmOnline::Application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { :host => 'kcmfinance.heroku.com' }
-  
+
   ActionMailer::Base.smtp_settings = {
   :address    => "smtp.sendgrid.net",
   :port       => 25,
