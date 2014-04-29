@@ -17,10 +17,14 @@ class PagesController < ApplicationController
         @japan_total_check = 0
         @nicaragua_total_cash = 0
         @nicaragua_total_check = 0
-        @uganda_total_cash = 0
-        @uganda_total_check = 0
+        @cambodia_total_cash = 0
+        @cambodia_total_check = 0
         @china_total_cash = 0
         @china_total_check = 0
+        @philippines_total_cash = 0
+        @philippines_total_check = 0
+        @turkey_total_cash = 0
+        @turkey_total_check = 0
 
         @leader_total_cash = 0
         @leader_total_check = 0
@@ -41,9 +45,15 @@ class PagesController < ApplicationController
           elsif user.team == "nicaragua"
             @nicaragua_total_cash += user.finances.sum("cash_amount")
             @nicaragua_total_check += user.finances.sum("check_amount")
-          elsif user.team == "uganda"
-            @uganda_total_cash += user.finances.sum("cash_amount")
-            @uganda_total_check += user.finances.sum("check_amount")
+          elsif user.team == "cambodia"
+            @cambodia_total_cash += user.finances.sum("cash_amount")
+            @cambodia_total_check += user.finances.sum("check_amount")
+          elsif user.team == "philippines"
+              @philippines_total_cash += user.finances.sum("cash_amount")
+              @philippines_total_check += user.finances.sum("check_amount")
+          elsif user.team == "turkey"
+              @turkey_total_cash += user.finances.sum("cash_amount")
+              @turkey_total_check += user.finances.sum("check_amount")
           elsif user.team == "china"
             @china_total_cash += user.finances.sum("cash_amount")
             @china_total_check += user.finances.sum("check_amount")
@@ -52,7 +62,9 @@ class PagesController < ApplicationController
         @india_total_amount = @india_total_check + @india_total_cash
         @japan_total_amount = @japan_total_check + @japan_total_cash
         @nicaragua_total_amount = @nicaragua_total_check + @nicaragua_total_cash
-        @uganda_total_amount = @uganda_total_check + @uganda_total_cash
+        @cambodia_total_amount = @cambodia_total_check + @cambodia_total_cash
+        @philippines_total_amount = @philippines_total_check + @philippines_total_cash
+        @turkey_total_amount = @turkey_total_check + @turkey_total_cash
         @china_total_amount = @china_total_check + @china_total_cash
         #works with leaders being "Admins"
         for i in @all_leader_indexes
