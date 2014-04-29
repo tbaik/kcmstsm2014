@@ -14,11 +14,11 @@
       <% end %>
 
       <%= f.label :current_password %>
-      <%= f.text_field :current_password %><br><br>
+      <%= f.password_field :current_password %><br><br>
       <%= f.label :password %>
-      <%= f.text_field :password, label: "New Password", autocomplete: "off" %><br><br>
+      <%= f.password_field :password, label: "New Password", autocomplete: "off" %><br><br>
       <%= f.label :password_confirmation %>
-      <%= f.text_field :password_confirmation, label: "New Password Confirmation", autocomplete: "off" %><br><br>
+      <%= f.password_field :password_confirmation, label: "New Password Confirmation", autocomplete: "off" %><br><br>
 
 
         <%= f.submit "Update", class: "btn btn-primary btn-large" %>
