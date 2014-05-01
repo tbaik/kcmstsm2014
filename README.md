@@ -5,3 +5,10 @@
 
 [Check it out Here!](http://kcmstsm2014.herokuapp.com)
 
+##Dependencies
+
+Initialize mailer (Sendgrid) 
+
+  $ heroku addons:add sendgrid:starter
+
+
