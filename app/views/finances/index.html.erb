@@ -21,7 +21,7 @@
         <fieldset>
           <%= fields_for :user do |u|  %>
             <%= u.label :fullname, "Name" %>
-            <%= u.autocomplete_field :fullname, autocomplete_user_fullname_finances_path  %>
+            <%= u.autocomplete_field :fullname, autocomplete_user_fullname_finances_path, :autofocus => true  %>
           <% end %>
           <%= f.label :date, "Date" %>
           <%= f.text_field :date, :class => "span2", :value => Date.today  %>
